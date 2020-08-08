@@ -58,6 +58,9 @@
             this.NumberOfRemoveActions = new System.Windows.Forms.TextBox();
             this.LogText = new System.Windows.Forms.RichTextBox();
             this.ClearLogButton = new System.Windows.Forms.Button();
+            this.PrimaryRadioButton = new System.Windows.Forms.RadioButton();
+            this.SecondaryRadioButton = new System.Windows.Forms.RadioButton();
+            this.DualApp = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -366,11 +369,47 @@
             this.ClearLogButton.UseVisualStyleBackColor = true;
             this.ClearLogButton.Click += new System.EventHandler(this.ClearLogButton_Click);
             // 
+            // PrimaryRadioButton
+            // 
+            this.PrimaryRadioButton.AutoSize = true;
+            this.PrimaryRadioButton.Location = new System.Drawing.Point(21, 500);
+            this.PrimaryRadioButton.Name = "PrimaryRadioButton";
+            this.PrimaryRadioButton.Size = new System.Drawing.Size(105, 17);
+            this.PrimaryRadioButton.TabIndex = 18;
+            this.PrimaryRadioButton.TabStop = true;
+            this.PrimaryRadioButton.Text = "Only Primary App";
+            this.PrimaryRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // SecondaryRadioButton
+            // 
+            this.SecondaryRadioButton.AutoSize = true;
+            this.SecondaryRadioButton.Location = new System.Drawing.Point(132, 500);
+            this.SecondaryRadioButton.Name = "SecondaryRadioButton";
+            this.SecondaryRadioButton.Size = new System.Drawing.Size(119, 17);
+            this.SecondaryRadioButton.TabIndex = 19;
+            this.SecondaryRadioButton.TabStop = true;
+            this.SecondaryRadioButton.Text = "Only Seconday App";
+            this.SecondaryRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // DualApp
+            // 
+            this.DualApp.AutoSize = true;
+            this.DualApp.Location = new System.Drawing.Point(260, 500);
+            this.DualApp.Name = "DualApp";
+            this.DualApp.Size = new System.Drawing.Size(65, 17);
+            this.DualApp.TabIndex = 20;
+            this.DualApp.TabStop = true;
+            this.DualApp.Text = "For Both";
+            this.DualApp.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 529);
+            this.ClientSize = new System.Drawing.Size(685, 536);
+            this.Controls.Add(this.DualApp);
+            this.Controls.Add(this.SecondaryRadioButton);
+            this.Controls.Add(this.PrimaryRadioButton);
             this.Controls.Add(this.ClearLogButton);
             this.Controls.Add(this.LogText);
             this.Controls.Add(this.groupBox4);
@@ -387,6 +426,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -421,6 +461,9 @@
         private System.Windows.Forms.Button ClearLogButton;
         private System.Windows.Forms.TextBox NumberOfGifterFiends;
         private System.Windows.Forms.Button RemoveGifterFiendsSequence;
+        private System.Windows.Forms.RadioButton PrimaryRadioButton;
+        private System.Windows.Forms.RadioButton SecondaryRadioButton;
+        private System.Windows.Forms.RadioButton DualApp;
     }
 }
 
