@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +11,7 @@ namespace PokemonGo
         {
             InitializeComponent();
             TextBox.CheckForIllegalCrossThreadCalls = false;
+            DualApp.Checked = true;
         }
 
         private void ClickTrainerButton_Click(object sender, EventArgs e)
@@ -26,8 +21,25 @@ namespace PokemonGo
 
         private void trainer()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                trainerCommand(serial1.Text, 70, 1040);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                trainerCommand(serial2.Text, 70, 2220);
+            }
+            else if (DualApp.Checked)
+            {
+                trainerCommand(serial1.Text, 70, 1040);
+                trainerCommand(serial2.Text, 70, 2220);
+            }
+        }
+
+        private void trainerCommand(string serial, int x, int y)
+        {
             LogText.Text += "Opening Trainer Section" + Environment.NewLine;
-            var command = "adb shell input tap 120 1670";
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -48,8 +60,25 @@ namespace PokemonGo
 
         private void clickFriend()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                clickFriendCommand(serial1.Text, 165, 850);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                clickFriendCommand(serial2.Text, 165, 1940);
+            }
+            else if (DualApp.Checked)
+            {
+                clickFriendCommand(serial1.Text, 165, 850);
+                clickFriendCommand(serial2.Text, 165, 1940);
+            }
+        }
+
+        private void clickFriendCommand(string serial, int x, int y)
+        {
             LogText.Text += "Clicking top most friend" + Environment.NewLine;
-            var command = "adb shell input tap 500 800";
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -70,8 +99,25 @@ namespace PokemonGo
 
         private void cancel()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                cancelCommand(serial1.Text, 540, 1025);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                cancelCommand(serial2.Text, 540, 2220);
+            }
+            else if (DualApp.Checked)
+            {
+                cancelCommand(serial1.Text, 540, 1025);
+                cancelCommand(serial2.Text, 540, 2220);
+            }
+        }
+
+        private void cancelCommand(string serial, int x, int y)
+        {
             LogText.Text += "Cancelling.." + Environment.NewLine;
-            var command = "adb shell input tap 540 1690";
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -92,8 +138,25 @@ namespace PokemonGo
 
         private void friends()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                friendsCommand(serial1.Text, 730, 255);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                friendsCommand(serial2.Text, 730, 1350);
+            }
+            else if (DualApp.Checked)
+            {
+                friendsCommand(serial1.Text, 730, 255);
+                friendsCommand(serial2.Text, 730, 1350);
+            }
+        }
+
+        private void friendsCommand(string serial, int x, int y)
+        {
             LogText.Text += "Opening Friends section" + Environment.NewLine;
-            var command = "adb shell input tap 730 200";
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -110,12 +173,30 @@ namespace PokemonGo
         private void ScrollButton_Click(object sender, EventArgs e)
         {
             scroll();
+            scroll();
         }
 
         private void scroll()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                scrollCommand(serial1.Text, 100, 1025, 100, 20);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                scrollCommand(serial2.Text, 100, 2220, 100, 1200);
+            }
+            else if (DualApp.Checked)
+            {
+                scrollCommand(serial1.Text, 100, 1025, 100, 20);
+                scrollCommand(serial2.Text, 100, 2220, 100, 1200);
+            }
+        }
+
+        private void scrollCommand(string serial, int x1, int y1, int x2, int y2)
+        {
             LogText.Text += "Scrolling friend" + Environment.NewLine;
-            var command = "adb shell input swipe 100 1000 100 10";
+            var command = $"adb -s {serial} input swipe {x1} {y1} {x2} {y2}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -136,8 +217,25 @@ namespace PokemonGo
 
         private void removeFriend()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                removeFriendCommand(serial1.Text, 540, 815);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                removeFriendCommand(serial2.Text, 540, 2010);
+            }
+            else if (DualApp.Checked)
+            {
+                removeFriendCommand(serial1.Text, 540, 815);
+                removeFriendCommand(serial2.Text, 540, 2010);
+            }
+        }
+
+        private void removeFriendCommand(string serial, int x, int y)
+        {
             LogText.Text += "Clickin on remove friend" + Environment.NewLine;
-            var command = "adb shell input tap 500 1500";
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -158,8 +256,25 @@ namespace PokemonGo
 
         private void confirmRemove()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                confirmRemoveCommand(serial1.Text, 540, 645);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                confirmRemoveCommand(serial2.Text, 540, 1790);
+            }
+            else if (DualApp.Checked)
+            {
+                confirmRemoveCommand(serial1.Text, 540, 645);
+                confirmRemoveCommand(serial2.Text, 540, 1790);
+            }
+        }
+
+        private void confirmRemoveCommand(string serial, int x, int y)
+        {
             LogText.Text += "Confirming Remove Friend" + Environment.NewLine;
-            var command = "adb shell input tap 500 950";
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -180,8 +295,25 @@ namespace PokemonGo
 
         private void clickGift()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                clickGiftCommand(serial1.Text, 560, 620);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                clickGiftCommand(serial2.Text, 560, 1780);
+            }
+            else if (DualApp.Checked)
+            {
+                clickGiftCommand(serial1.Text, 560, 620);
+                clickGiftCommand(serial2.Text, 560, 1780);
+            }
+        }
+
+        private void clickGiftCommand(string serial, int x, int y)
+        {
             LogText.Text += "Clicking gift" + Environment.NewLine;
-            var command = "adb shell input tap 570 950";
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -202,8 +334,25 @@ namespace PokemonGo
 
         private void openGift()
         {
+            if (PrimaryRadioButton.Checked)
+            {
+                openGiftCommand(serial1.Text, 540, 940);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                openGiftCommand(serial2.Text, 540, 2110);
+            }
+            else if (DualApp.Checked)
+            {
+                openGiftCommand(serial1.Text, 540, 940);
+                openGiftCommand(serial2.Text, 540, 2110);
+            }
+        }
+
+        private void openGiftCommand(string serial, int x, int y)
+        {
             LogText.Text += "Opening Gift" + Environment.NewLine;
-            var command = "adb shell input tap 500 1480";
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -219,7 +368,29 @@ namespace PokemonGo
 
         private void SpinPokestop_Click(object sender, EventArgs e)
         {
-            var command = "adb shell input swipe 100 800 800 800";
+            spinPokestop();
+        }
+
+        private void spinPokestop()
+        {
+            if (PrimaryRadioButton.Checked)
+            {
+                spinPokestopCommand(serial1.Text, 90, 550, 1020, 550);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                spinPokestopCommand(serial2.Text, 90, 1760, 1020, 1760);
+            }
+            else if (DualApp.Checked)
+            {
+                spinPokestopCommand(serial1.Text, 90, 550, 1020, 550);
+                spinPokestopCommand(serial2.Text, 90, 1760, 1020, 1760);
+            }
+        }
+
+        private void spinPokestopCommand(string serial, int x1, int y1, int x2, int y2)
+        {
+            var command = $"adb -s {serial} input swipe {x1} {y1} {x2} {y2}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -235,8 +406,30 @@ namespace PokemonGo
 
         private void CatchButton_Click(object sender, EventArgs e)
         {
+            throwPokeBall();
+        }
+
+        private void throwPokeBall()
+        {
+            if (PrimaryRadioButton.Checked)
+            {
+                throwPokeBallCommand(serial1.Text, 540, 2130, 540, 1180);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                throwPokeBallCommand(serial2.Text, 540, 1630, 540, 900);
+            }
+            else if (DualApp.Checked)
+            {
+                throwPokeBallCommand(serial1.Text, 540, 2130, 540, 1180);
+                throwPokeBallCommand(serial2.Text, 540, 1630, 540, 900);
+            }
+        }
+
+        private void throwPokeBallCommand(string serial, int x1, int y1, int x2, int y2)
+        {
             string speed = SpeedTextBox.Text;
-            var command = "adb shell input swipe 560 1600 560 600 " + speed;
+            var command = $"adb -s {serial} shell input swipe {x1} {y1} {x2} {y2} " + speed;
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -257,7 +450,24 @@ namespace PokemonGo
 
         private void cancelRemove()
         {
-            var command = "adb shell input tap 500 1050";
+            if (PrimaryRadioButton.Checked)
+            {
+                cancelRemoveCommand(serial1.Text, 540, 805);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                cancelRemoveCommand(serial2.Text, 540, 1950);
+            }
+            else if (DualApp.Checked)
+            {
+                cancelRemoveCommand(serial1.Text, 540, 805);
+                cancelRemoveCommand(serial2.Text, 540, 1950);
+            }
+        }
+
+        private void cancelRemoveCommand(string serial, int x, int y)
+        {
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -307,7 +517,29 @@ namespace PokemonGo
 
         private void MeTabButton_Click(object sender, EventArgs e)
         {
-            var command = "adb shell input tap 350 175";
+            me();
+        }
+
+        private void me()
+        {
+            if (PrimaryRadioButton.Checked)
+            {
+                meCommand(serial1.Text, 350, 255);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                meCommand(serial2.Text, 350, 1350);
+            }
+            else if (DualApp.Checked)
+            {
+                meCommand(serial1.Text, 350, 255);
+                meCommand(serial2.Text, 350, 1350);
+            }
+        }
+
+        private void meCommand(string serial, int x, int y)
+        {
+            var command = $"adb -s {serial} input tap {x} {y}";
             System.Diagnostics.ProcessStartInfo procStartInfo =
                 new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
             procStartInfo.RedirectStandardInput = true;
@@ -421,6 +653,76 @@ namespace PokemonGo
         {
             LogText.SelectionStart = LogText.Text.Length;
             LogText.ScrollToCaret();
+        }
+
+        private void RightCatch_Click(object sender, EventArgs e)
+        {
+            throwPokeBallRight();
+        }
+
+        private void LeftCatch_Click(object sender, EventArgs e)
+        {
+            throwPokeBallLeft();
+        }
+
+        private void throwPokeBallRight()
+        {
+            if (PrimaryRadioButton.Checked)
+            {
+                throwPokeBallCommand(serial1.Text, 540, 2130, 800, 1180);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                throwPokeBallCommand(serial2.Text, 540, 1630, 800, 900);
+            }
+            else if (DualApp.Checked)
+            {
+                throwPokeBallCommand(serial1.Text, 540, 2130, 800, 1180);
+                throwPokeBallCommand(serial2.Text, 540, 1630, 800, 900);
+            }
+        }
+
+        private void throwPokeBallLeft()
+        {
+            if (PrimaryRadioButton.Checked)
+            {
+                throwPokeBallCommand(serial1.Text, 540, 2130, 280, 1180);
+            }
+            else if (SecondaryRadioButton.Checked)
+            {
+                throwPokeBallCommand(serial2.Text, 540, 1630, 280, 900);
+            }
+            else if (DualApp.Checked)
+            {
+                throwPokeBallCommand(serial1.Text, 540, 2130, 280, 1180);
+                throwPokeBallCommand(serial2.Text, 540, 1630, 280, 900);
+            }
+        }
+
+        private void connect_Click(object sender, EventArgs e)
+        {
+            var serialNumber1 = serial1.Text;
+            var serialNumber2 = serial2.Text;
+
+            lunchScrcpy(serialNumber1);
+            Thread.Sleep(1000);
+            lunchScrcpy(serialNumber2);
+        }
+
+        private void lunchScrcpy(string serialNumber)
+        {
+            var command = $"scrcpy -s {serialNumber}";
+            System.Diagnostics.ProcessStartInfo procStartInfo =
+                new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c " + command);
+            procStartInfo.RedirectStandardInput = true;
+            procStartInfo.RedirectStandardOutput = true;
+            procStartInfo.RedirectStandardError = true;
+            procStartInfo.UseShellExecute = false;
+            procStartInfo.CreateNoWindow = true;
+
+            System.Diagnostics.Process proc = new System.Diagnostics.Process();
+            proc.StartInfo = procStartInfo;
+            proc.Start();
         }
     }
 }

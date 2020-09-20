@@ -7,3 +7,12 @@ D:\Documents\PokemonGo\obj\Debug\PokemonGo.Properties.Resources.resources
 D:\Documents\PokemonGo\obj\Debug\PokemonGo.csproj.GenerateResource.cache
 D:\Documents\PokemonGo\obj\Debug\PokemonGo.exe
 D:\Documents\PokemonGo\obj\Debug\PokemonGo.pdb
+D:\Documents\PokemonGoController\MotoG\PokemonGo\bin\Debug\PokemonGo.exe.config
+D:\Documents\PokemonGoController\MotoG\PokemonGo\bin\Debug\PokemonGo.exe
+D:\Documents\PokemonGoController\MotoG\PokemonGo\bin\Debug\PokemonGo.pdb
+D:\Documents\PokemonGoController\MotoG\PokemonGo\obj\Debug\PokemonGo.csprojAssemblyReference.cache
+D:\Documents\PokemonGoController\MotoG\PokemonGo\obj\Debug\PokemonGo.Form1.resources
+D:\Documents\PokemonGoController\MotoG\PokemonGo\obj\Debug\PokemonGo.Properties.Resources.resources
+D:\Documents\PokemonGoController\MotoG\PokemonGo\obj\Debug\PokemonGo.csproj.GenerateResource.cache
+D:\Documents\PokemonGoController\MotoG\PokemonGo\obj\Debug\PokemonGo.exe
+D:\Documents\PokemonGoController\MotoG\PokemonGo\obj\Debug\PokemonGo.pdb
